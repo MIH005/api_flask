@@ -1,14 +1,13 @@
 version: '3.8'
 
 services:
-  app:
+  web:
     build: .
     container_name: sistema_escolar
+    image: sistema_escolar:1.0
     ports:
       - "5000:5000"
     volumes:
-      - .:/app  
-    environment:
-      - FLASK_APP=app.py  
-      - FLASK_ENV=development 
-    command: flask run --host=0.0.0.0 
+      - .:/app
+    working_dir: /app
+    command: python app.py
