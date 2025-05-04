@@ -1,4 +1,4 @@
-from swagger.namespace.aluno_namespace import aluno_output
+from swagger.namespace.aluno_namespace import aluno_output_model
 from flask_restx import Namespace, Resource, fields
 from models.model_turma import adicionar_turma, listar_turmas, buscar_turma_por_id, atualizar_turma, deletar_turma
 
@@ -15,7 +15,7 @@ turma_output_model = turma_ns.model("TurmaOutput", {
     "descricao": fields.String(description="Descrição da turma"),
     "professor_id": fields.Integer(description="ID do professor"),
     "ativo": fields.Boolean(description="Se a turma está ativa"),
-    "alunos": fields.List(fields.Nested(aluno_output), description="Lista de alunos da turma")
+    "alunos": fields.List(fields.Nested(aluno_output_model), description="Lista de alunos da turma")
 })
 
 @turma_ns.route("/")
